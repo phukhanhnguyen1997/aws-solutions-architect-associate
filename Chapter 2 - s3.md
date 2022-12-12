@@ -95,3 +95,47 @@
     * SSE-KMS: AWS key management Service-managed keys. Use key provided from AWS
     * SSE-C: use key by ourselves.
   * Encryption at Rest: Client-Side Encryption: We encrypt the file before we upload to S3.
+- Enforcing Server-side Encryption: We have 2 ways to do it:
+  * Console: Select the encryption setting on your s3 bucket. The easiest way is just a checkbox in the console.
+  * Bucket Policy: You can also enforce encryption using a bucket policy. This method sometimes comes up in the xam.
+- Everytime a file is uploaded to S3, A PUT request is initiated.
+- In order to enforce server-side encryption, we’ve got 2 different options
+- x-amz-server-side-encryption: If the file is to be encrypted at upload time, the x-amz-server-side-encryption parameter will be included in the request header:
+  * x-amz-serverside-encryption: AES256 => use S3-managed keys
+  * x-amz-server-side-encryption: aws:kms => using KMS-managed keys.
+- We can create a bucket policy that denies any S3 PUT request that doesn’t include the x-amz-server-side-encryption parameter in the request header.
+Note:
+  * We can encryp in a number of different way:
+  * Encryption in Transit: SSL/TLS, HTTPS
+  * Encryption at Rest: SSE, SSE-S3, SSE-KMS, SSE-C
+  * Client Side Encryption: Encrypt the files before upload to S3.
+- Enforce encryption using bucket policy
+- S3 prefix is just the folder inside our bucket.
+- S3 has extremely low latency. You can get the first by out of S3 within 100-200ms.
+- 3500 PUT/COPY/POST/DELETE and 5500 GET/HEAD requests per prefix per second.
+- So we can get better performance by spreading our reads across different prefixes.
+- S3 limitations when using KMS:
+  * If you’re using SSE-KMS to encrypt your object, you must keep in mind the KMS limits.
+  * When you upload a file, you will call GenerateDataKey in the KMS API.
+  * When you download a file, you will call Decrypt in the KMS API.
+- KMS comes with the build-in limits, it’s region specific:
+  * Uploading/downloading will count toward the KMS quota.
+  * Region-specific going to be roughly 5.500, 10k or 30k request per seconds.
+  * Currently, we cannot request a quota increase for KMS.
+- Encryption question tip: we might want to consider just using the native S3 encryption that’s built-in rather than using KMS. If you’re asked to troubleshoot a KMS question, it could just be that you’re hitting the KMS limit and that could be what’s causing your downloads or your requests to be much, much slower.
+- S3 Multipart uploads:
+  * Recommend for file over 100MB.
+  * Required for file over 5GB.
+  * Prallelize uploads(increase efficiency) => We have 1 big file, we split into parts and upload those chunks at the same time
+- S3 Byte-Range Fetches: can be used to speed up downloads, download partial amounts of the file.
+  * Parallelize downloads by specifying byte ranges. If there’s a failure in the download, it’s only for a specific byte range.
+- S3 Replication used to be called Cross Region Replication because you do it from one region to another region.
+- But now you can do it just from 1 bucket to another bucket in the same region as well => they renamed it.
+  * It’s a way to replicate objects from one bucket to another bucket. Versioning must be enabled on both the source and destination bucket.
+  * Object in an existing bucket are not replicated automatically. Once replication is turned on, all subsequent updated objects will be replicated automatically.
+  * Delete markers are not replicated by default. However, we can turn on if we want => Deleting individual versions and delete markers will not be replicated by default.
+- If you going to do this, it’s best to create 2 new buckets: a source bucket and a destination bucket, turn replication on and then upload your objects.
+- Exam tips:
+  * You can replicate object from one bucket to another.
+  * Objects in an existing bucket are not replicated automatically.
+  * Delete marker are not replicated by default, can enable if we want.
