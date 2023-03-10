@@ -5,37 +5,37 @@
 - Design to make web-scale cloud computing easier for developers.
 - The capacity you want when you need it
 - You are in complete control of your own instances.
-Only pay for what you use
-No wasted capacity.
-On-prsemises infrastructure:
-Estimate Capacity: long-term investment, 3-5 years. Expectation that the application will “grow into” it.
-Wait minutes, not months. All you needed was to basically provide credit card details. After that it would be done throught software, but basically via an API call, and it would provision our EC2 instances in minutes.
-Ec2 Pricing Options:
-On-demand: Pay by hour or second, depending on the type of instance you run.
-Reserved Capacity: You get into a contract with AWS for between 1-3 years. The longer the contract and the more you pay upfront, the greater discount you get. If you want to save the most amount of money, if you want to save money compared to On-Demand, what you do is you reserve capacity. Up to 72% discount on the hourly charge.
-Spot: Purchase unused capacity at a discount up to 90%, but prices flutuate with supply and demand.
-Dedicated: A physical EC2 server dedicated for your use. This is the most expensive option.
-On-Demand Instances: test or dev
-Flexible: Low cost and flexibility of Amazon EC2 without any upfront payment or long-term commitment.
-Short-term: Applications with short-term, spiky or unpredictable workloads that cannot be interrupted.
-Testing the Water: Applications being developed or tested on Amazon EC2 for the first time.
-Reserved Instances: operate at a regional level
-Predictable Usage: Applications with steady state or predictable usage.
-Specific Capacity Requirements: Applications that require reserved capacity.
-Pay up font: You can make upfront payments to reduce the total computing costs even further.
-Standard RIs: Up to 72% off the on-demand price.
-Convertible RIs: Up to 54% off the on-demand price. Has the option to change to a different RI type of equal or greater value.
-Scheduled Reserved Instances: Launch within the time window you define. Match your capacity reservation to a predictable recurring schedule that only requires a fraction of a day, week or month.
-Spot Instances:
-Applications that have flexible sgtart and end times.
-Applications that are only feasible at very low compute prices.
-Users with an urgent need for large amounts of additional computing capacity.
-Dedicated Hosts:
-Compliance: Regulatory requirements that may not support multi-tenant virtualization.
-Licensing: Great for licensing that does not support multi-tenancy or cloud deployments.
-On-Demand: Can be purchased on-demand(hourly).
-Reserved: Can be purchased as a reservation for up to 70% off the on-demand price.
-Exam tips: 
+- Only pay for what you use
+- No wasted capacity.
+- On-prsemises infrastructure:
+  - Estimate Capacity: long-term investment, 3-5 years. Expectation that the application will “grow into” it.
+  - Wait minutes, not months. All you needed was to basically provide credit card details. After that it would be done throught software, but basically via an API call, and it would provision our EC2 instances in minutes.
+- Ec2 Pricing Options:
+  - On-demand: Pay by hour or second, depending on the type of instance you run.
+  - Reserved Capacity: You get into a contract with AWS for between 1-3 years. The longer the contract and the more you pay upfront, the greater discount you get. If you want to save the most amount of money, if you want to save money compared to On-Demand, what you do is you reserve capacity. Up to 72% discount on the hourly charge.
+  - Spot: Purchase unused capacity at a discount up to 90%, but prices flutuate with supply and demand.
+  - Dedicated: A physical EC2 server dedicated for your use. This is the most expensive option.
+- On-Demand Instances: test or dev
+  - Flexible: Low cost and flexibility of Amazon EC2 without any upfront payment or long-term commitment.
+  - Short-term: Applications with short-term, spiky or unpredictable workloads that cannot be interrupted.
+  - Testing the Water: Applications being developed or tested on Amazon EC2 for the first time.
+- Reserved Instances: operate at a regional level
+  - Predictable Usage: Applications with steady state or predictable usage.
+  - Specific Capacity Requirements: Applications that require reserved capacity.
+  - Pay up font: You can make upfront payments to reduce the total computing costs even further.
+  - Standard RIs: Up to 72% off the on-demand price.
+  - Convertible RIs: Up to 54% off the on-demand price. Has the option to change to a different RI type of equal or greater value.
+  - Scheduled Reserved Instances: Launch within the time window you define. Match your capacity reservation to a predictable recurring schedule that only requires a fraction of a day, week or month.
+- Spot Instances:
+  - Applications that have flexible sgtart and end times.
+  - Applications that are only feasible at very low compute prices.
+  - Users with an urgent need for large amounts of additional computing capacity.
+- Dedicated Hosts:
+  - Compliance: Regulatory requirements that may not support multi-tenant virtualization.
+  - Licensing: Great for licensing that does not support multi-tenancy or cloud deployments.
+  - On-Demand: Can be purchased on-demand(hourly).
+  - Reserved: Can be purchased as a reservation for up to 70% off the on-demand price.
+? Exam tips: 
 EC2 like virtual machine. 
 Select the capacity you need right now.
 Grow and shrink when you need.
