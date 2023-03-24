@@ -1,5 +1,5 @@
 EBS
-EBS stands for Elastic Block Storage.
+EBS stands for Elastic Block Storage. phukhanh1997
 There are different type of EBS volumns available.
 There’s different use case for each type.
 Storage volumn that you can attach to your EC2 instances.
