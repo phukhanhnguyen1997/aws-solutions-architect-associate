@@ -43,3 +43,17 @@
 - In order to communicate to your EC2 instances via SSH, RDP or HTTP, you will need to open up the correct ports.
 ## Security Groups are stateful
 - if you send a request from your instance, the response traffic for that request is allowed to flow in regardless of inbound security group rules.
+
+# Section 4:
+## Network ACLs: The first line of defense
+- A network access control list(ACL) is an optional layer of security for your VPC that acts as a firewall for controlling traffic in and out of one or more subnets.
+- You might set up network ACLs with rules similar to your security groups in order to add another layer of security to your VPC.
+  - Default Network ACLs: Your VPC automatically comes with a default network ACL, and by default it allows all outbound and inbound traffic.
+  - Custom Network ACLs: You can create custom network ACLs. By default, each custom network ACL denies all inbound and outbound until you add rules.
+  - Subnet Associations: Each subnet in your VPC must be associated with a network ACL. If you don't explicitly associate a subnet with a network ACL, the subnet is automatically associated with the default network ACL.
+  - Block IP Addresses: Block IP addresses using network ACLs, not security groups.
+### Tips
+- You can associate a network ACL with multiple subnets. However, a subnet can be associated with only 1 network ACL at a time. When you associate a network ACL with a subnet, the previous association is removed.
+- Network ACLs contain a numbered list of rules that are evaluated in order, starting with the lowest numbered rule.
+- Network ACLs have separate inbound and outbound rules, and each rule can either allow or deny traffic.
+- Network ACLs are stateless; responses to allowed inbound traffic are subject to the rules for outbound traffic
