@@ -121,3 +121,66 @@
 - Direct Connect directly connects your data center to AWS.
 - Useful for high-throughput workloads
 - Helpful when you need a stable and reliable secure connection.
+# Section 10:
+## Transit Gateway:
+- AWS Transit Gateway connects VPCs and on-premises networks through a central hub. This simplifies your network and puts an end to complex peering relationships. It acts as a cloud router - each new connection is only made once.
+- It allows you to have transitive peering between thousands of VPCs and on-premises data centers.
+- Works on a hub-and-spoke model.
+- Works on a regional basis, but you can have it across multiple regions.
+- You can use it across multiple AWS accounts using RAM(Resource Access Manager).
+# Section 11:
+## 5G Networks:
+- 5G provides mobile devices with higher speed, lower latency and greater capacity than 4G LTE networks. It is one of the fastest, most robust technologies the world has ever seen.
+AWS Wavelength embeds AWS compute and storage services within 5G networks, providing mobile edge computing infrastructure for developing, deploying and scaling ultra-low-latency applications.
+## Exam tips:
+- Mobile Edge Computing -> AWS Wavelength
+## Exam tips:
+- You can use route tables to limit how VPCs talk to one another.
+- Works with Direct Connect as well as VPN connections.
+- Support IP multicast (not supported by any other AWS service).
+# VPC Networking Exam tips:
+## VPC:
+- Think of VPC as a logical data center in AWS.
+- Consists of internet gateways(or virtual private gateways), route tables, network access control lists, subnets and security groups.
+- 1 subnets is always in 1 Availability Zone.
+## NAT Gateways
+- Redundant inside the Availability Zone.
+- Starts at 5 Gbps and scales currently to 45 Gbps.
+- No need to patch
+- High Availability with NAT gateways: If you have resources in multiple Availability Zone and they share a NAT gateway, in the event the NAT gateway's Availability Zone is down, resources in the other Availability Zones lose internet access.
+- To create Availability Zone-independent architecture, create a NAT gateway in each Availability Zone and configure your routing to ensure resrouces use the NAT gateway in the same Availability Zone.
+## Security Groups:
+- Stateful - if you send a request from your instance, the response traffic for that request is allowed to flow in regardless of inbound security group rules.
+- Responses to allowed inbound traffic are allowed to flow out, regardless of outbound rules.
+## Network ACLs:
+- Default Network ACLs: Your VPC automatically comes with a default network ACL and by default it allows all outbound and inbound traffic.
+- Custom Network ACLs: You can create custom network ACLs. By default, each custom network ACL denies all inbound and outbound traffic until you add rules.
+- Subnet Associations: Each subnet in your VPC must be associated with a network ACL. If you don't explicitly associate a subnet with a network ACL, the subnet is automatically associated with the default network ACL.
+- Block IP Addresses: Block IP addresses using network ACLs, not security groups.
+- You can associate a network ACL with multiple subnets. However, a subnet can be associated with only 1 network ACL at a time. When you associate a network ACL with a subnet, the previous association is removed.
+- Network ACLs contain a numbered list of rules that are evaluated in order, starting with the lowest numbered rule.
+- Network ACLs have separate inbound and outbound rules, and each rule can either allow or deny traffic.
+- Network ACL are stateless. Responses to allowed inbound traffic are subject to the rules for outbound traffic(and vice versa).
+## Direct Connect
+- Direct Connect directly connects your data center to AWS.
+- Useful for high-throughput workloads(lots of network traffic).
+- Helpful when you need a stable and reliable secure connection.
+## VPC Endpoints:
+- When you want to connect AWS services without leaving the Amazon internal network.
+- 2 types of VPC Endpoints: Interface Endpoints and gateway endpoints
+- Gateway Endpoints: Support S3 and DynamoDB.
+## Peering:
+- Allows you to connect 1 VPC with another via a direct network route using private IP addresses.
+- Instances behave as if they were on the same private network.
+- You can peer VPCs with other AWS accounts as well as with other VPCs in the same accounts.
+- Peering is in star configuration(1 central VPC peers with 4 others). No transitive peering.
+- You can peer between regions.
+## AWS PrivateLink:
+- If you see question about peering VPC to tens, hundreds, thousands of custom VPCs, think of AWS PrivateLink.
+- Doesn't require VPC peering; no route tables, NAT gateways, internet gateways.
+- Requires a Network Load Balancer on the service VPC and an ENI on the customer VPC.
+## AWS Transit Gateway:
+- You can route tables to limit how VPCs talk to another one.
+- Works with Direct Connect as well as VPN connections.
+- Supports IP multicast(not supported by any other AWS service).
+## Mobile Edge Computing -> AWS Wavelength
