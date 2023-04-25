@@ -46,3 +46,31 @@
   - Geolocation Routing
   - Geoproximity Routing(Traffic Flow Only)
   - Multivalue Answer Routing
+## Simple Routing Policy:
+- If you choose the simple routing policy, you can only have one record with multiple IP addresses. If you specify multiple values in a record, Route 53 returns all values to the user in a random order.
+## Weighted Routing Policy:
+- Allows you to split your traffic based on different weights assigned.
+For example: You can set 10% of your traffic to go to us-east-1 and 90% to go to eu-west-1.
+## Health Checks
+- You can set Health Checkes on individual record sets.
+- If a record set fails a health check, it will be removed from Route 53 until it passes the health check.
+- You can set SNS notifications to alert you about failed health checks.
+## Failover Routing Policy
+- Failover routing policies are used when you want to create an active/passive set up.
+## Geolocation Routing Policy
+- Geolocation routing lets you choose where your traffic will be sent based on the geographic location of your users(i.e the location from which DNS queries originate).
+- Use case: You might want all queries from Europe to be routed to a fleet of EC2 instances that are specifically configured for your European customers.
+- Localization: These servers may have the local language of your European customers and display all prices in euros.
+## Geoproximity Routing Policy
+- Geoproximity routing lets Amazon Route 53 route traffic to your resources based on the geographic location of your users and your resources.
+- You can also optionally choose to route more traffic or less to a given resource by specifying a value, known as a bias.
+- Bias expands or shrinks the size of the geographic region from which traffic is routed to a resource.
+- To use geoproximity routing, you must use Route 53 traffic flow.
+## Latency Routing Policy
+- Allows you to route your traffic based on the lowest network latency for your end user(i.e which region will give them the fastest response time).
+- To use latency-based routing, you create a latency resource record set for the EC2(or Elastic Load Balancer) resource in each region that hosts your website.
+- When Route 53 receives a query for your site, it selects the latency resource record set for the region that gives the user the lowest latency.
+- Route 53 then responds with the value associated with that resource record set.
+## Multivalue Answer Routing
+- Multivalue answer routing lets you configure Amazon Route 53 to return multiple values, such as IP addresses for your web servers, in response to DNS queries.
+- You can specify multiple values for almost any record, but multivalue answer routing also lets you check the heath of each resource, so Route 53 returns only values for healthy resources.
