@@ -55,3 +55,31 @@
 - Other use cases are where you need protocols not supported by Application Load Balaner
 - Network Load Balancers can decrypt traffic, but you will need to install the certificate on the load balancer.
 # Section 4: Classic Load Balancers
+## Classic Load Balancer
+- Classic Load Balancer are the lagacy load balancers. You can load balance HTTP/HTTPS applications and use Layer 7-specific features, such as X-Forwarded and sticky sessions. You can also use strict Layer 4 load balancing for applications that rely purely on the TCP protocol.
+## X-Forwarded-For
+- When traffic is sent from a load balancer, the server access logs contain the IP address of the proxy or load balancer only.
+- To see the original IP address of the client, the X-Forwarded-For request header is used.
+## Gateway Timeouts
+- If your application stops responding, the Classic Load Balancer responds with a 504 error.
+- This means the application is having issues. This could be either at the web server layer or database layer.
+## Exam tips:
+- A 504 error means the gateway has timed out. This means the application is not responding within the idle timeout period.
+- Troubleshoot the application. Is it the web server or database server?
+- Need the IPv4 address of your end user? Look for the X-Forwarded-For header.
+# Section 5:
+## What are sticky sessions?
+- Classic Load Balancers route each request independently to the registered EC2 instance with the smallest load.
+- Sticky sessions allow you to bind a user's session to a specific EC2 instance.
+- You can enable sticky sessions for Application Load Balancers as well, but the traffic will be sent at the target group level.
+## Exam tips:
+- Sticky Sessions enable your user to stick to the same EC2 instance. Can be useful if you are storing information locally to that instance.
+- You may see a scenario-based question where you remove an EC2 instance from a pool, but the load balancer continues to direct traffic to that EC2 instance. To solve a scenario like this, disable sticky sessions.
+# Section 6:
+## Deregistration Delay(Connection Draining)
+- Deregistration Delay allows Load Balancers to keep existing connections open if the EC2 instances are de-registered or become unhealthy.
+- This enables the load balancer to complete in-flight requests made to instances that are de-registering or unhealthy.
+- You can disable deregistration delay if you want your load balancer to immediately close connections to the instances that are de-registering or have become unhealthy.
+## Exam tips:
+- Enable deregistration delay: Keep existing connection open if the EC2 instance becomes unhealthy.
+- Disable deregistration delay: Do this if you want your load balancer to immediately close connections to the instances that are de-registering or have become unhealthy.
