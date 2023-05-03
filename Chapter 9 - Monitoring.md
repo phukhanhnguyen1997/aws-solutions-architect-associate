@@ -22,3 +22,21 @@
 - Standard vs Detailed: Standard is 5 minutes interval, whereas detailed is 1 minute.
 - A period is the length of time associated with a specific Amazon CloudWatch statistic. The default period value is 60 seconds.
 # Section 2
+## CloudWatch logs
+- CloudWatch logs is a tool that allows you to monitor, store and access log files from a variety of different sources. It gives you the ability to query your logs to look for potential issues or data that is relevant to you.
+## 3 CloudWatch Logs Terms
+- Log event: This is the record of what happended. It contains a timestamp and the data.
+- Log Stream: A collection of log events from the same source create a log stream. Think of one continuous set of logs from a single instance.
+- Log Group: This iss a collection of log streams. For example, you'd group all your Apache web server logs across hosts together.
+## CloudWatch Logs Feature
+### Filter Patterns
+- You can look for specific terms in your logs. Think 400 errors in your web server logs.
+### CloudWatch Logs Insights
+- This allows you to query all your logs using a SQL-like interactive solution.
+### Alarms
+- Once you've identified your trends or patterns, it's time to alert on them.
+## Exam tips:
+- Goto tool: Generally, favor CloudWatch Logs, unless the exam asks for a real-time solution.
+- Alarms: CloudWatch alarms can be used to alert if the filter patterns are found.
+- Agent Based: The CloudWatch agent must be installed and configured. It's not automatic.
+- SQL: If the exam mentions SQL, think CloudWatch Logs Insights.
