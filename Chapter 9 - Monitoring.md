@@ -40,3 +40,17 @@
 - Alarms: CloudWatch alarms can be used to alert if the filter patterns are found.
 - Agent Based: The CloudWatch agent must be installed and configured. It's not automatic.
 - SQL: If the exam mentions SQL, think CloudWatch Logs Insights.
+# Section 3
+## Amazon Managed Grafana
+- Fully managed AWS service allowing secure data visualizations for instantly querying, correlating and visualizing your operational metrics, logs and traces from different sources.
+- It integrate with several sources including Amazon CloudWatch, Amazon Managed Service for Prometheus, Amazon OpenSearch Service and Amazon Timestream.
+## Use case
+### Container Metric Visualizations
+- Connect to data sources like Prometheus for visualizing EKS, ECS or your own Kubernetes cluster metrics.
+### Internet of things(IoT)
+- Vast data plugins make the service a perfect fit for monitoring IoT and edge device data.
+### Troubleshooting
+- Centralizing dashboard allows for more efficient operational issue troubleshooting.
+## Amazon Managed Service for Prometheus
+- Serverless, Prometheus-compatible service used for securely monitoring container metrics at scale.
+## Exam tips
