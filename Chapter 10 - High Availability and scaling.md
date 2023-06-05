@@ -33,4 +33,4 @@
 # Section 3
 ## Auto Scaling Groups
 - An Auto Scaling group contains a collection of EC2 instances that are treated as a collective group for purposes of scaling and management.
-* 1/ Define your template
+  * 1/ Define your template
